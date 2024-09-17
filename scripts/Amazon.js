@@ -1,34 +1,34 @@
-const products=[{
-  image:'images/products/athletic-cotton-socks-6-pairs.jpg',
-  name:' Black and Gray Athletic Cotton Socks - 6 Pairs',
-  rating:{
-    rate:4.5,
-    ratenum:87
-  },
-  priceCent:1090
+// const products=[{
+//   image:'images/products/athletic-cotton-socks-6-pairs.jpg',
+//   name:' Black and Gray Athletic Cotton Socks - 6 Pairs',
+//   rating:{
+//     rate:4.5,
+//     ratenum:87
+//   },
+//   priceCent:1090
 
-},{
-  image:'images/products/intermediate-composite-basketball.jpg',
-  name:'Intermediate Size Basketball',
-  rating:{
-    rate:4,
-    ratenum:127
-  }
+// },{
+//   image:'images/products/intermediate-composite-basketball.jpg',
+//   name:'Intermediate Size Basketball',
+//   rating:{
+//     rate:4,
+//     ratenum:127
+//   }
   
-},{
-  image:'images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg',
-  name:'images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg',
-  rating:{
-    rate:4.5,
-    ratenum:56
-  },
-  priceCent:799
+// },{
+//   image:'images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg',
+//   name:'images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg',
+//   rating:{
+//     rate:4.5,
+//     ratenum:56
+//   },
+//   priceCent:799
   
-},
+// },
 
 
   
-]
+// ]
 let productHtml='';
 products.forEach((product)=>{
   let html=`
@@ -44,14 +44,14 @@ products.forEach((product)=>{
 
           <div class="product-rating-container">
             <img class="product-rating-stars"
-              src="images/ratings/rating-${product.rating.rate*10}.png">
+              src="images/ratings/rating-${product.rating.stars*10}.png">
             <div class="product-rating-count link-primary">
-             ${product.rating.ratenum}
+             ${product.rating.count}
             </div>
           </div>
 
           <div class="product-price">
-           ${product.priceCent/100}
+           ${product.priceCents/100}
           </div>
 
           <div class="product-quantity-container">
@@ -87,6 +87,8 @@ products.forEach((product)=>{
   document.querySelector('.js-products-grid').innerHTML=productHtml;
 
 
+
+  
 
 
  
