@@ -55,7 +55,7 @@ products.forEach((product)=>{
           </div>
 
           <div class="product-quantity-container">
-            <select>
+            <select class="js-quantity-${product.id}">
               <option selected value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -71,10 +71,10 @@ products.forEach((product)=>{
 
           <div class="product-spacer"></div>
 
-          <div class="added-to-cart">
-            <img src="images/icons/checkmark.png">
-            Added
-          </div>
+        <div class="added-to-cart js-added-to-cart">
+        <img src="images/icons/checkmark.png">
+         Added   
+  </div>
 
           <button class="add-to-cart-button button-primary  js-add-to-cart"
            data-product-id="${product.id}">
@@ -93,6 +93,13 @@ products.forEach((product)=>{
   button.addEventListener('click',()=>{
     let productsId=button.dataset.productId;
 
+
+
+    //select quantity of carts
+ let selectEl= document.querySelector(`.js-quantity-${productsId}`);
+ let selectvalue=Number(selectEl.value);
+ 
+
     let maching;
     cart.forEach((item)=>{
       if(productsId === item.productid){
@@ -107,13 +114,31 @@ products.forEach((product)=>{
 
       cart.push({
         productid:productsId,
-        qountity:1
+        qountity:selectvalue
       })
     }
 
-    console.log(cart)
+let CartQuantity=0;
+
+cart.forEach((item)=>{
+  CartQuantity+=item.qountity;
+})
+
+document.querySelector('.js-cart-quantity').innerHTML=CartQuantity;
+
+
+
+
+
+
+
+
+console.log(document.querySelectorAll('.js-added-to-cart'))
+
+   
   })
  })
+
 
 
 
