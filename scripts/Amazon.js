@@ -30,7 +30,7 @@
   
 // ]
 
-import { cart } from "../data/Cart.js";
+import { cart,addTocart } from "../data/Cart.js";
 import { products } from "../data/products.js";
 
 
@@ -92,55 +92,32 @@ products.forEach((product)=>{
 })
   document.querySelector('.js-products-grid').innerHTML=productHtml;
 
- let addTocart= document.querySelectorAll('.js-add-to-cart');
 
- addTocart.forEach((button)=>{
-  button.addEventListener('click',()=>{
-    let productsId=button.dataset.productId;
-   
 
-    //select quantity of carts
- let selectEl= document.querySelector(`.js-quantity-${productsId}`);
- let selectvalue=Number(selectEl.value);
+// CARTQUANTITY FUNCTION
  
-
-    let maching;
-    cart.forEach((item)=>{
-      if(productsId === item.productid){
-        maching=item
-      }
-    })
-
-    if(maching){
-      maching.qountity++;
-    }
-    else if(!maching){
-
-      cart.push({
-        productid:productsId,
-        qountity:selectvalue
-      })
-    }
-
-let CartQuantity=0;
-
-cart.forEach((item)=>{
-  CartQuantity+=item.qountity;
+function CartQuantityFUN(){
+    let CartQuantity=0;
+  cart.forEach((item)=>{
+    CartQuantity+=item.qountity;
 })
-
 document.querySelector('.js-cart-quantity').innerHTML=CartQuantity;
+  }
 
+ let addTocartEL= document.querySelectorAll('.js-add-to-cart');
 
-// let element=document.querySelectorAll('.added-to-cart')
-// .forEach((item)=>{
-// item.classList.add('js-added-to-cart')
-// console.log(item)
-// })
-
-
+ addTocartEL.forEach((button)=>{
+  button.addEventListener('click',()=>{
+  let productsId=button.dataset.productId;
+    addTocart(productsId);
+    CartQuantityFUN();
 
   })
  })
+
+
+
+ 
 
 
 
