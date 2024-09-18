@@ -29,6 +29,11 @@
 
   
 // ]
+
+import { cart } from "../data/Cart.js";
+import { products } from "../data/products.js";
+
+
 let productHtml='';
 products.forEach((product)=>{
   let html=`
@@ -71,7 +76,7 @@ products.forEach((product)=>{
 
           <div class="product-spacer"></div>
 
-        <div class="added-to-cart js-added-to-cart">
+        <div class="added-to-cart">
         <img src="images/icons/checkmark.png">
          Added   
   </div>
@@ -92,8 +97,7 @@ products.forEach((product)=>{
  addTocart.forEach((button)=>{
   button.addEventListener('click',()=>{
     let productsId=button.dataset.productId;
-
-
+   
 
     //select quantity of carts
  let selectEl= document.querySelector(`.js-quantity-${productsId}`);
@@ -127,15 +131,14 @@ cart.forEach((item)=>{
 document.querySelector('.js-cart-quantity').innerHTML=CartQuantity;
 
 
+// let element=document.querySelectorAll('.added-to-cart')
+// .forEach((item)=>{
+// item.classList.add('js-added-to-cart')
+// console.log(item)
+// })
 
 
 
-
-
-
-console.log(document.querySelectorAll('.js-added-to-cart'))
-
-   
   })
  })
 
